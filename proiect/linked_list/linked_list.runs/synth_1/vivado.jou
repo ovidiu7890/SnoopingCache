@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.2 (64-bit)
+# SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+# IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+# SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+# Start of session at: Sat Nov  8 14:44:44 2025
+# Process ID: 13272
+# Current directory: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.runs/synth_1
+# Command line: vivado.exe -log datastructures.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source datastructures.tcl
+# Log file: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.runs/synth_1/datastructures.vds
+# Journal file: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.runs/synth_1\vivado.jou
+# Running On: ovi, OS: Windows, CPU Frequency: 3593 MHz, CPU Physical cores: 16, Host memory: 34025 MB
+#-----------------------------------------------------------
+source datastructures.tcl -notrace

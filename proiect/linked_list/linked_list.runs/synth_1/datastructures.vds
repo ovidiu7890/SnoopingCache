@@ -1,0 +1,39 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.2 (64-bit)
+# SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+# IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+# SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+# Start of session at: Sat Nov  8 14:44:44 2025
+# Process ID: 13272
+# Current directory: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.runs/synth_1
+# Command line: vivado.exe -log datastructures.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source datastructures.tcl
+# Log file: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.runs/synth_1/datastructures.vds
+# Journal file: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.runs/synth_1\vivado.jou
+# Running On: ovi, OS: Windows, CPU Frequency: 3593 MHz, CPU Physical cores: 16, Host memory: 34025 MB
+#-----------------------------------------------------------
+source datastructures.tcl -notrace
+Command: synth_design -top datastructures -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12240
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 916.238 ; gain = 444.059
+---------------------------------------------------------------------------------
+ERROR: [Synth 8-2716] syntax error near 'protected' [C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/DataStructures.vhd:7]
+ERROR: [Synth 8-9735] missing full type definition for 'linkedlist' [C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/DataStructures.vhd:7]
+ERROR: [Synth 8-10949] mismatch on label; expected 'datastructures' [C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/DataStructures.vhd:13]
+INFO: [Synth 8-11252] unit 'datastructures' is ignored due to previous errors [C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/DataStructures.vhd:13]
+INFO: [Synth 8-10443] VHDL file 'C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/DataStructures.vhd' is ignored due to errors
+ERROR: [Synth 8-439] module 'datastructures' not found
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1022.938 ; gain = 550.758
+---------------------------------------------------------------------------------
+synthesize failed
+INFO: [Common 17-83] Releasing license: Synthesis
+7 Infos, 0 Warnings, 0 Critical Warnings and 5 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Sat Nov  8 14:44:53 2025...

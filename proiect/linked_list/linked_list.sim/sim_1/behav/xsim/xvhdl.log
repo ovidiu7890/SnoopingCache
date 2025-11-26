@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/LRU_Cache_16.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'LRU_Cache_16'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_LRU_Cache_16'

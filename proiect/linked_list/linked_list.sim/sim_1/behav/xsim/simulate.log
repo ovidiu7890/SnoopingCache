@@ -1,0 +1,96 @@
+Time resolution is 1 ps
+Note: === CACHE TEST START ===
+Time: 70 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 0 -> HIT
+Time: 90 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 1 -> MISS (fetching...)
+Time: 160 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 1
+Time: 460 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 2 -> MISS (fetching...)
+Time: 530 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 2
+Time: 830 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 3 -> MISS (fetching...)
+Time: 900 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 3
+Time: 1200 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 4 -> MISS (fetching...)
+Time: 1270 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 4
+Time: 1570 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 5 -> MISS (fetching...)
+Time: 1640 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 5
+Time: 1940 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 6 -> MISS (fetching...)
+Time: 2010 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 6
+Time: 2310 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 7 -> MISS (fetching...)
+Time: 2380 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 7
+Time: 2680 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 8 -> MISS (fetching...)
+Time: 2750 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 8
+Time: 3050 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 9 -> MISS (fetching...)
+Time: 3120 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 9
+Time: 3420 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 10 -> MISS (fetching...)
+Time: 3490 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 10
+Time: 3790 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 11 -> MISS (fetching...)
+Time: 3860 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 11
+Time: 4160 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 12 -> MISS (fetching...)
+Time: 4230 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 12
+Time: 4530 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 13 -> MISS (fetching...)
+Time: 4600 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 13
+Time: 4900 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 14 -> MISS (fetching...)
+Time: 4970 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 14
+Time: 5270 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 15 -> MISS (fetching...)
+Time: 5340 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 15
+Time: 5640 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 16 -> MISS (fetching...)
+Time: 5710 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 16
+Time: 6010 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 17 -> MISS (fetching...)
+Time: 6080 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 17
+Time: 6380 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 18 -> MISS (fetching...)
+Time: 6450 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 18
+Time: 6750 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: === CACHE TEST DONE ===
+Time: 6800 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Failure: Simulation finished
+Time: 8800 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+$finish called at time : 8800 ns : File "C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd" Line 75
+Note: === CACHE TEST START ===
+Time: 8870 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 0 -> HIT
+Time: 8890 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 1 -> MISS (fetching...)
+Time: 8960 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 1
+Time: 9260 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 2 -> MISS (fetching...)
+Time: 9330 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Memory fetch done for 2
+Time: 9630 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
+Note: Accessed 3 -> MISS (fetching...)
+Time: 9700 ns  Iteration: 0  Process: /tb_LRU_Cache_16/line__40  File: C:/facultate/3sem1/ssc/proiect/linked_list/linked_list.srcs/sources_1/new/tb_LRU_Cache_16.vhd
