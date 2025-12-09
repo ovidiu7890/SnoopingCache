@@ -2,7 +2,13 @@
 2020.2
 Feb  9 2024
 00:36:40
-C:/facultate/3sem1/ssc/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/RAM.vhd,1764107846,vhdl,,,,ram,,,,,,,,
-C:/facultate/3sem1/ssc/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/RAM_tb.vhd,1764108224,vhdl,,,,ram_tb,,,,,,,,
-C:/facultate/3sem1/ssc/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd,1764108406,vhdl,C:/facultate/3sem1/ssc/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_cache.vhd,,,cache,,,,,,,,
-C:/facultate/3sem1/ssc/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_cache.vhd,1764108726,vhdl,,,,tb_cache,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/Cache_Types.vhd,1765275592,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache_controller.vhd;C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,,,cache_types,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/RAM.vhd,1764107846,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,,,ram,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/bus_arbiter.vhd,1765310807,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,,,bus_arbiter,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd,1765315809,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,,,cache,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache_controller.vhd,1765315825,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,,,cache_controller,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd,1765273277,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,,,cpu,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd,1765315110,vhdl,,,,tb_system_top,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_cache.vhd,1765270109,vhdl,,,,tb_cache,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_cache_controller.vhd,1765271648,vhdl,,,,tb_cache_controller,,,,,,,,
+C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd,1765313387,vhdl,C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd,,,top_module,,,,,,,,
