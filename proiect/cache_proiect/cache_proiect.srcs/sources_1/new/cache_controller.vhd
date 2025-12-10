@@ -8,25 +8,20 @@ entity cache_controller is
         clk             : in std_logic;
         rst             : in std_logic;
         
-        -- Bus Interface
         i_bus_addr      : in std_logic_vector(15 downto 0);
         i_bus_cmd       : in std_logic_vector(1 downto 0);
         i_bus_source_id : in integer range 0 to 2;
         o_bus_abort     : out std_logic;
         
-        -- Snoop Broadcast to Caches
         o_snoop_addr      : out std_logic_vector(15 downto 0);
         o_snoop_check     : out std_logic_vector(2 downto 0);
         
-        -- Snoop Responses from Caches
         i_snoop_hit       : in  std_logic_vector(2 downto 0);
         i_snoop_mesi      : in  t_mesi_array;
         
-        -- State Updates to Caches
         o_snoop_update_en : out std_logic_vector(2 downto 0);
         o_snoop_new_state : out t_mesi_array;
 
-        -- Response to Requesting Cache (E vs S)
         o_response_mesi   : out t_mesi_array 
     );
 end cache_controller;
@@ -61,7 +56,6 @@ begin
             v_abort_needed    := '0';
             v_copy_exists     := '0';
 
-            -- 1. Trigger Snoops
             if i_bus_cmd = CMD_BUS_RD or i_bus_cmd = CMD_BUS_RDX then
                 for i in 0 to 2 loop
                     if i /= i_bus_source_id then
@@ -78,27 +72,21 @@ begin
                     if i_snoop_hit(i) = '1' then
                         v_copy_exists := '1'; 
                         
-                        -- === READ REQUEST (BusRd) ===
                         if i_bus_cmd = CMD_BUS_RD then
-                            -- If Modified, FLUSH and go Shared
                             if i_snoop_mesi(i) = MESI_M then
                                 v_abort_needed := '1'; 
                                 o_snoop_update_en(i) <= '1';
                                 o_snoop_new_state(i) <= MESI_S;
                             
-                            -- If Exclusive, just go Shared
                             elsif i_snoop_mesi(i) = MESI_E then
                                 o_snoop_update_en(i) <= '1';
                                 o_snoop_new_state(i) <= MESI_S;
                             end if;
 
-                        -- === WRITE REQUEST (BusRdX) ===
                         elsif i_bus_cmd = CMD_BUS_RDX then
-                            -- Invalidate everyone else
                             if i_snoop_mesi(i) /= MESI_I then
                                 o_snoop_update_en(i) <= '1';
                                 o_snoop_new_state(i) <= MESI_I;
-                                -- If Modified, Flush first
                                 if i_snoop_mesi(i) = MESI_M then
                                     v_abort_needed := '1';
                                 end if;
@@ -108,11 +96,10 @@ begin
                 end if; 
             end loop;
             
-            -- 3. Determine Response for Requester
             if v_copy_exists = '1' then
-                o_response_mesi(i_bus_source_id) <= MESI_S; -- Shared
+                o_response_mesi(i_bus_source_id) <= MESI_S;
             else
-                o_response_mesi(i_bus_source_id) <= MESI_E; -- Exclusive
+                o_response_mesi(i_bus_source_id) <= MESI_E;
             end if;
 
             o_bus_abort <= v_abort_needed;

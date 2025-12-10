@@ -7,7 +7,6 @@ entity cache is
         i_clk             : in std_logic;
         i_rst             : in std_logic;
         
-        -- CPU Interface
         i_address_cpu     : in std_logic_vector(15 downto 0);
         i_write_data_cpu  : in std_logic_vector(7 downto 0);
         i_read            : in std_logic;
@@ -15,7 +14,6 @@ entity cache is
         o_read_data_cpu   : out std_logic_vector(7 downto 0);
         o_hit             : out std_logic;
         
-        -- Controller / Bus Snoop Interface
         i_address_cc      : in std_logic_vector(15 downto 0);
         i_data_request    : in std_logic;
         i_invalidate      : in std_logic;
@@ -24,7 +22,6 @@ entity cache is
         i_snoop_new_state : in std_logic_vector(1 downto 0);
         o_snoop_hit       : out std_logic;
 
-        -- Memory Interface
         i_mem_ready       : in std_logic;
         i_mem_data        : in std_logic_vector(31 downto 0);
         i_mesi_cc         : in std_logic_vector(1 downto 0);
@@ -35,7 +32,6 @@ entity cache is
         o_data_out        : out std_logic_vector(47 downto 0);
         o_writeback_en    : out std_logic;
         
-        -- Bus Broadcast
         o_data_broadcast  : out std_logic_vector(31 downto 0);
         o_mesi_cache      : out std_logic_vector(1 downto 0);
         o_invalidate      : out std_logic
@@ -53,34 +49,32 @@ architecture Behavioral of cache is
 
 begin
 
-    -- =========================================================================
-    -- 1. [COMBINATORIAL] CPU Hit Detection
-    -- =========================================================================
+    -- 1.CPU Hit Detection
     process(r_cache_lines, i_address_cpu)
         variable v_hit : std_logic;
         variable v_hit_index : integer range 0 to 15;
     begin
-        v_hit := '0'; v_hit_index := 0;
+        v_hit := '0'; 
+        v_hit_index := 0;
         for i in 0 to 15 loop
             if r_cache_lines(i)(47 downto 34) = i_address_cpu(15 downto 2) then
                 if r_cache_lines(i)(33 downto 32) /= "11" then
-                    v_hit := '1'; v_hit_index := i; exit;
+                    v_hit := '1';
+                    v_hit_index := i; exit;
                 end if;
             end if;
         end loop;
-        s_hit <= v_hit; s_hit_index <= v_hit_index; o_hit <= v_hit;
+        s_hit <= v_hit; 
+        s_hit_index <= v_hit_index; 
+        o_hit <= v_hit;
     end process;
 
-    -- =========================================================================
-    -- 2. [COMBINATORIAL] Snoop Hit Detection (THE FIX)
-    -- =========================================================================
-    -- This runs instantly when i_data_request goes high. 
-    -- The controller sees 'o_snoop_hit' immediately, not on the next clock.
+    -- 2.Snoop Hit Detection
     process(r_cache_lines, i_address_cc, i_data_request)
     begin
         o_snoop_hit      <= '0';
         o_data_broadcast <= (others => '0');
-        o_mesi_cache     <= "11"; -- Default Invalid
+        o_mesi_cache     <= "11"; 
         
         if i_data_request = '1' then
             for i in 0 to 15 loop
@@ -96,9 +90,7 @@ begin
         end if;
     end process;
 
-    -- =========================================================================
-    -- 3. [SEQUENTIAL] Main Clocked Process (Updates & CPU State Machine)
-    -- =========================================================================
+    -- 3. [SEQUENTIAL] Main Clocked Process
     process (i_clk, i_rst)
         variable v_temp_data    : std_logic_vector(47 downto 0);
     begin
@@ -115,16 +107,12 @@ begin
             o_invalidate   <= '0'; 
             o_writeback_en <= '0';
 
-            -- A. APPLY SNOOP UPDATES (Write to Memory)
-            -- While detection is combinatorial, WRITING the new state must happen on clock edge.
             if i_data_request = '1' then
                 for i in 0 to 15 loop
                     if r_cache_lines(i)(47 downto 34) = i_address_cc(15 downto 2) then
                         if r_cache_lines(i)(33 downto 32) /= "11" then
-                            -- Standard Invalidate
                             if i_invalidate = '1' then
                                 r_cache_lines(i)(33 downto 32) <= "11"; 
-                            -- Controller Forced State Change (e.g., E -> S)
                             elsif i_snoop_update_en = '1' then
                                 r_cache_lines(i)(33 downto 32) <= i_snoop_new_state;
                             end if;
@@ -134,35 +122,29 @@ begin
                 end loop;
             end if;
 
-            -- B. CPU LOGIC
             case r_state is
                 when S_IDLE =>
                     if (i_write = '1') or (i_read = '1') then
                         if s_hit = '1' then
-                            -- LRU Shift
+                        
                             if s_hit_index > 0 then
                                 v_temp_data := r_cache_lines(s_hit_index);
                                 for j in 15 downto 1 loop
-                                    if j <= s_hit_index then
-                                        r_cache_lines(j) <= r_cache_lines(j-1);
+                                    if j <= s_hit_index then 
+                                        r_cache_lines(j) <= r_cache_lines(j-1); 
                                     end if;
                                 end loop;
                                 r_cache_lines(0) <= v_temp_data;
                             end if;
                             
-                            -- Hit Write
                             if i_write = '1' then
-                                -- MESI Transitions on Local Write
                                 if r_cache_lines(0)(33 downto 32) /= "00" then
-                                    r_cache_lines(0)(33 downto 32) <= "00"; -- Force Modified
-                                    -- If Shared, we must broadcast Invalidate
+                                    r_cache_lines(0)(33 downto 32) <= "00";
                                     if r_cache_lines(0)(33 downto 32) = "10" then
                                         o_invalidate  <= '1'; 
                                         o_mem_address <= i_address_cpu;
                                     end if;
                                 end if;
-                                
-                                -- Update Data
                                 case i_address_cpu(1 downto 0) is
                                     when "00" => r_cache_lines(0)(31 downto 24) <= i_write_data_cpu;
                                     when "01" => r_cache_lines(0)(23 downto 16) <= i_write_data_cpu;
@@ -172,7 +154,6 @@ begin
                                 end case;
                             end if;
 
-                            -- Hit Read
                             if i_read = '1' then
                                 case i_address_cpu(1 downto 0) is
                                     when "00" => o_read_data_cpu <= r_cache_lines(0)(31 downto 24);
@@ -183,11 +164,9 @@ begin
                                 end case;
                             end if;
                         else
-                            -- MISS Logic
                             o_mem_request <= '1';
                             o_mem_address <= i_address_cpu;
                             
-                            -- Write-Back Check: Is the old line Modified?
                             if r_cache_lines(15)(33 downto 32) = "00" then
                                 o_writeback_en <= '1';
                                 o_data_out     <= r_cache_lines(15);
@@ -204,16 +183,15 @@ begin
                     end if;
 
                 when S_MISS_WAIT_WRITE =>
-                    o_mem_request <= '0'; o_rwitm <= '0';
+                    o_mem_request <= '1'; 
+                    o_rwitm       <= '1'; 
+                    
                     if i_mem_ready = '1' then
-                        for j in 15 downto 1 loop
-                            r_cache_lines(j) <= r_cache_lines(j-1);
-                        end loop;
+                        o_mem_request <= '0';
+                        o_rwitm       <= '0';
                         
-                        -- Insert new line. Note: i_mesi_cc comes from Controller (Exclusive/Shared)
-                        -- But since this is a WRITE miss, we immediately go to Modified ("00")
+                        for j in 15 downto 1 loop r_cache_lines(j) <= r_cache_lines(j-1); end loop;
                         r_cache_lines(0) <= i_address_cpu(15 downto 2) & "00" & i_mem_data;
-                        
                         case i_address_cpu(1 downto 0) is
                             when "00" => r_cache_lines(0)(31 downto 24) <= i_write_data_cpu;
                             when "01" => r_cache_lines(0)(23 downto 16) <= i_write_data_cpu;
@@ -225,15 +203,14 @@ begin
                     end if;
 
                 when S_MISS_WAIT_READ =>
-                    o_mem_request <= '0';
+                    o_mem_request <= '1';
+                    o_rwitm       <= '0';
+                    
                     if i_mem_ready = '1' then
-                        for j in 15 downto 1 loop
-                            r_cache_lines(j) <= r_cache_lines(j-1);
-                        end loop;
+                        o_mem_request <= '0';
                         
-                        -- Insert New Line. i_mesi_cc is "01" (Exc) or "10" (Shared) based on Controller response
+                        for j in 15 downto 1 loop r_cache_lines(j) <= r_cache_lines(j-1); end loop;
                         r_cache_lines(0) <= i_address_cpu(15 downto 2) & i_mesi_cc & i_mem_data;
-                        
                         case i_address_cpu(1 downto 0) is
                             when "00" => o_read_data_cpu <= r_cache_lines(0)(31 downto 24);
                             when "01" => o_read_data_cpu <= r_cache_lines(0)(23 downto 16);

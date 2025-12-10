@@ -104,20 +104,20 @@ begin
         wait for 20 ns;
 
 
-        -- =================================================================
-        -- SCENARIO 2: CPU 1 Reads Same Address 0x1000
-        -- Expect: Coherence Check. Cache 0 is snooped. Both become SHARED.
-        -- =================================================================
-        report "SCENARIO 2: CPU 1 Read 0x1000 (Shared)" severity note;
+--        -- =================================================================
+--        -- SCENARIO 2: CPU 1 Reads Same Address 0x1000
+--        -- Expect: Coherence Check. Cache 0 is snooped. Both become SHARED.
+--        -- =================================================================
+--        report "SCENARIO 2: CPU 1 Read 0x1000 (Shared)" severity note;
         
-        cmd1_addr <= x"1000";
-        cmd1_rw   <= '0'; -- Read
-        cmd1_en   <= '1';
-        wait for CLK_PERIOD;
-        cmd1_en   <= '0';
+--        cmd1_addr <= x"1000";
+--        cmd1_rw   <= '0'; -- Read
+--        cmd1_en   <= '1';
+--        wait for CLK_PERIOD;
+--        cmd1_en   <= '0';
 
-        wait until sts1_done = '1';
-        wait for 20 ns;
+--        wait until sts1_done = '1';
+--        wait for 20 ns;
 
         
 --        -- =================================================================
@@ -145,7 +145,7 @@ begin
 --        --         Cache 2 has Modified data. Cache 2 snoops and intervenes.
 --        -- =================================================================
 --        report "SCENARIO 4: CPU 0 Re-Read 0x1000 (Snoop Modified)" severity note;
-        
+    
 --        cmd0_addr <= x"1000";
 --        cmd0_rw   <= '0';
 --        cmd0_en   <= '1';
@@ -169,7 +169,7 @@ begin
 --        wait until sts1_done = '1';
 --        wait for 20 ns;
 
---        -- STEP B: CPU 1 Writes to 0x2000 (Becomes Modified)
+--        --STEP B: CPU 1 Writes to 0x2000 (Becomes Modified)
 --        report "SCENARIO 5B: CPU 1 Writes 0xAA to 0x2000 (Transitions to Modified)" severity note;
 --        cmd1_data <= x"AA";
 --        cmd1_rw   <= '1'; -- Write

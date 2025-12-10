@@ -6,9 +6,7 @@ entity bus_arbiter is
     Port (
         clk           : in std_logic;
         rst           : in std_logic;
-        
         i_req         : in std_logic_vector(2 downto 0);
-        
         o_grant_id    : out integer range 0 to 2;
         o_bus_active  : out std_logic
     );
