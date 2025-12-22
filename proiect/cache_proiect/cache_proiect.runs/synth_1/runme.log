@@ -1,0 +1,65 @@
+
+*** Running vivado
+    with args -log top_m.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_m.tcl
+
+
+ECHO is off.
+ECHO is off.
+
+****** Vivado v2023.2.2 (64-bit)
+  **** SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+  **** IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+  **** SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source top_m.tcl -notrace
+Command: synth_design -top top_m -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 480
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1300.688 ; gain = 438.734
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top_m' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_m.vhd:14]
+INFO: [Synth 8-638] synthesizing module 'debouncer' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/debouncer.vhd:12]
+INFO: [Synth 8-256] done synthesizing module 'debouncer' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/debouncer.vhd:12]
+INFO: [Synth 8-638] synthesizing module 'ROM' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/ROM.vhd:17]
+INFO: [Synth 8-256] done synthesizing module 'ROM' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/ROM.vhd:17]
+INFO: [Synth 8-638] synthesizing module 'top_module' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd:28]
+INFO: [Synth 8-638] synthesizing module 'bus_arbiter' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/bus_arbiter.vhd:15]
+INFO: [Synth 8-256] done synthesizing module 'bus_arbiter' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/bus_arbiter.vhd:15]
+INFO: [Synth 8-638] synthesizing module 'cache_controller' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache_controller.vhd:24]
+INFO: [Synth 8-256] done synthesizing module 'cache_controller' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache_controller.vhd:24]
+INFO: [Synth 8-638] synthesizing module 'RAM' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/RAM.vhd:16]
+INFO: [Synth 8-256] done synthesizing module 'RAM' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/RAM.vhd:16]
+INFO: [Synth 8-638] synthesizing module 'cpu' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd:27]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd:51]
+INFO: [Synth 8-256] done synthesizing module 'cpu' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd:27]
+INFO: [Synth 8-638] synthesizing module 'cache' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:40]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:147]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:159]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:202]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:222]
+INFO: [Synth 8-256] done synthesizing module 'cache' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'top_module' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd:28]
+INFO: [Synth 8-256] done synthesizing module 'top_m' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_m.vhd:14]
+WARNING: [Synth 8-4767] Trying to implement RAM 'RAM_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
+Reason is one or more of the following :
+	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
+	2: Unable to determine number of words or word size in RAM. 
+	3: No valid read/write found for RAM. 
+ERROR: [Synth 8-3391] Unable to infer a block/distributed RAM for 'RAM_reg' because the memory pattern used is not supported. Failed to dissolve the memory into bits because the number of bits (524288) is too large. Use 'set_param synth.elaboration.rodinMoreOptions {rt::set_parameter dissolveMemorySizeLimit 524288}' to allow the memory to be dissolved into individual bits
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 1429.707 ; gain = 567.754
+---------------------------------------------------------------------------------
+RTL Elaboration failed
+INFO: [Common 17-83] Releasing license: Synthesis
+29 Infos, 1 Warnings, 0 Critical Warnings and 2 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Mon Dec 22 11:33:41 2025...

@@ -26,10 +26,10 @@ begin
         
         if rising_edge (i_clk) then
             if i_write = '1' then
-                RAM(base_addr + 0) <= i_data(7  downto 0);
-                RAM(base_addr + 1) <= i_data(15 downto 8);
-                RAM(base_addr + 2) <= i_data(23 downto 16);
                 RAM(base_addr + 3) <= i_data(31 downto 24);
+                RAM(base_addr + 2) <= i_data(23 downto 16);
+                RAM(base_addr + 1) <= i_data(15 downto 8);
+                RAM(base_addr + 0) <= i_data(7  downto 0); 
             end if;
         end if;
         if i_read = '1' then
