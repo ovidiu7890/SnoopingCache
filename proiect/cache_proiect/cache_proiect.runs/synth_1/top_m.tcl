@@ -70,7 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -110,6 +110,8 @@ read_xdc C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiec
 set_property used_in_implementation false [get_files C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/constrs_1/new/constraints.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/utils_1/imports/synth_1/top_m.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

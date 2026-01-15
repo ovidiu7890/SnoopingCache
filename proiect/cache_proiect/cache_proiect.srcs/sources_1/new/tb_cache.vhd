@@ -5,235 +5,227 @@ use IEEE.NUMERIC_STD.ALL;
 entity tb_cache is
 end tb_cache;
 
-architecture sim of tb_cache is
+architecture Behavioral of tb_cache is
 
-    -- ------------------------------------------------------------------
+    -- Component Declaration
+    component cache is
+        Port ( 
+            i_clk             : in std_logic;
+            i_rst             : in std_logic;
+            i_address_cpu     : in std_logic_vector(15 downto 0);
+            i_write_data_cpu  : in std_logic_vector(7 downto 0);
+            i_read            : in std_logic;
+            i_write           : in std_logic;
+            o_read_data_cpu   : out std_logic_vector(7 downto 0);
+            o_hit             : out std_logic;
+            
+            i_address_cc      : in std_logic_vector(15 downto 0);
+            i_data_request    : in std_logic;
+            i_invalidate      : in std_logic; 
+            
+            i_snoop_update_en : in std_logic;
+            i_snoop_new_state : in std_logic_vector(1 downto 0);
+            o_snoop_hit       : out std_logic;
+
+            i_mem_ready       : in std_logic;
+            i_mem_data        : in std_logic_vector(31 downto 0);
+            i_mesi_cc         : in std_logic_vector(1 downto 0);
+            
+            o_mem_request     : out std_logic;
+            o_mem_address     : out std_logic_vector(15 downto 0);
+            o_rwitm           : out std_logic;
+            o_data_out        : out std_logic_vector(47 downto 0);
+            o_writeback_en    : out std_logic;
+            o_data_broadcast  : out std_logic_vector(31 downto 0);
+            o_mesi_cache      : out std_logic_vector(1 downto 0);
+            o_invalidate      : out std_logic
+        );
+    end component;
+
     -- Signals
-    -- ------------------------------------------------------------------
-    signal i_clk             : std_logic := '0';
-    signal i_rst             : std_logic := '0';
-    
-    -- CPU Signals
+    signal clk : std_logic := '0';
+    signal rst : std_logic := '0';
+
+    -- CPU Interface
     signal i_address_cpu     : std_logic_vector(15 downto 0) := (others => '0');
-    signal i_write_data_cpu  : std_logic_vector(7 downto 0)  := (others => '0');
-    signal i_read            : std_logic := '0';
-    signal i_write           : std_logic := '0';
+    signal i_write_data_cpu  : std_logic_vector(7 downto 0) := (others => '0');
+    signal i_read, i_write   : std_logic := '0';
     signal o_read_data_cpu   : std_logic_vector(7 downto 0);
     signal o_hit             : std_logic;
-    
-    -- Controller / Snooping Signals (UPDATED)
+
+    -- Snoop Interface
     signal i_address_cc      : std_logic_vector(15 downto 0) := (others => '0');
-    signal i_data_request    : std_logic := '0';  -- Snoop Enable
+    signal i_data_request    : std_logic := '0';
     signal i_invalidate      : std_logic := '0';
-    signal i_snoop_update_en : std_logic := '0';  -- NEW
-    signal i_snoop_new_state : std_logic_vector(1 downto 0) := "00"; -- NEW
-    signal o_snoop_hit       : std_logic;         -- NEW
+    signal i_snoop_update_en : std_logic := '0';
+    signal i_snoop_new_state : std_logic_vector(1 downto 0) := "11";
+    signal o_snoop_hit       : std_logic;
     signal o_data_broadcast  : std_logic_vector(31 downto 0);
     signal o_mesi_cache      : std_logic_vector(1 downto 0);
-    signal o_invalidate      : std_logic;
-    
-    -- Memory Interface Signals
+
+    -- Memory Interface
     signal i_mem_ready       : std_logic := '0';
     signal i_mem_data        : std_logic_vector(31 downto 0) := (others => '0');
-    signal i_mesi_cc         : std_logic_vector(1 downto 0) := "10";
+    signal i_mesi_cc         : std_logic_vector(1 downto 0) := "01"; -- Default E
     signal o_mem_request     : std_logic;
     signal o_mem_address     : std_logic_vector(15 downto 0);
     signal o_rwitm           : std_logic;
     signal o_data_out        : std_logic_vector(47 downto 0);
+    signal o_writeback_en    : std_logic;
+    signal o_invalidate_out  : std_logic;
 
-    -- Simulation Constants
     constant CLK_PERIOD : time := 10 ns;
-    
-    -- MESI State Constants for readability
-    constant MESI_M : std_logic_vector(1 downto 0) := "00";
-    constant MESI_E : std_logic_vector(1 downto 0) := "01";
-    constant MESI_S : std_logic_vector(1 downto 0) := "10";
-    constant MESI_I : std_logic_vector(1 downto 0) := "11";
 
 begin
 
-    -- ------------------------------------------------------------------
-    -- Instantiate the DUT
-    -- ------------------------------------------------------------------
-    DUT: entity work.cache
-        port map (
-            i_clk             => i_clk,
-            i_rst             => i_rst,
-            
-            -- CPU
-            i_address_cpu     => i_address_cpu,
-            i_write_data_cpu  => i_write_data_cpu,
-            i_read            => i_read,
-            i_write           => i_write,
-            o_read_data_cpu   => o_read_data_cpu,
-            o_hit             => o_hit,
-            
-            -- Controller / Snoop
-            i_address_cc      => i_address_cc,
-            i_data_request    => i_data_request,
-            i_invalidate      => i_invalidate,
-            i_snoop_update_en => i_snoop_update_en, -- Connected
-            i_snoop_new_state => i_snoop_new_state, -- Connected
-            o_snoop_hit       => o_snoop_hit,       -- Connected
-            
-            o_data_broadcast  => o_data_broadcast,
-            o_mesi_cache      => o_mesi_cache,
-            o_invalidate      => o_invalidate,
-            
-            -- Memory
-            i_mem_ready       => i_mem_ready,
-            i_mem_data        => i_mem_data,
-            i_mesi_cc         => i_mesi_cc,
-            o_mem_request     => o_mem_request,
-            o_mem_address     => o_mem_address,
-            o_rwitm           => o_rwitm,
-            o_data_out        => o_data_out
-        );
+    uut: cache port map (
+        i_clk => clk, i_rst => rst,
+        i_address_cpu => i_address_cpu, i_write_data_cpu => i_write_data_cpu,
+        i_read => i_read, i_write => i_write, o_read_data_cpu => o_read_data_cpu, o_hit => o_hit,
+        i_address_cc => i_address_cc, i_data_request => i_data_request, i_invalidate => i_invalidate,
+        i_snoop_update_en => i_snoop_update_en, i_snoop_new_state => i_snoop_new_state, o_snoop_hit => o_snoop_hit,
+        i_mem_ready => i_mem_ready, i_mem_data => i_mem_data, i_mesi_cc => i_mesi_cc,
+        o_mem_request => o_mem_request, o_mem_address => o_mem_address, o_rwitm => o_rwitm,
+        o_data_out => o_data_out, o_writeback_en => o_writeback_en,
+        o_data_broadcast => o_data_broadcast, o_mesi_cache => o_mesi_cache, o_invalidate => o_invalidate_out
+    );
 
-    -- Clock Generation
+    -- Clock Process
     clk_process : process
     begin
-        while true loop
-            i_clk <= '0';
-            wait for CLK_PERIOD/2;
-            i_clk <= '1';
-            wait for CLK_PERIOD/2;
-        end loop;
+        clk <= '0'; wait for CLK_PERIOD/2;
+        clk <= '1'; wait for CLK_PERIOD/2;
     end process;
 
-    -- ------------------------------------------------------------------
-    -- Test Stimulus
-    -- ------------------------------------------------------------------
-    stim_proc : process
+    -- Stimulus Process
+    stim_proc: process
     begin
-        -- Initial Reset
-        i_rst <= '1';
-        wait for 3*CLK_PERIOD;
-        i_rst <= '0';
-        wait for 2*CLK_PERIOD;
+        rst <= '1';
+        wait for 20 ns;
+        rst <= '0';
+        wait for 10 ns;
+
+        -- =========================================================
+        -- TEST 1: READ MISS -> FILL -> CHECK DATA (Atomic Update)
+        -- =========================================================
+        report "TEST 1: Read Miss & Fill (Checking Atomic Update)" severity note;
         
-        -- =============================================================
-        -- TEST 1: Read Miss (Allocating line at 0x1234)
-        -- =============================================================
-        report "TEST 1: CPU Read Miss 0x1234" severity note;
-        i_address_cpu <= x"1234";
+        i_address_cpu <= x"1000"; -- Address 0x1000
+        i_read <= '1';
+        wait for CLK_PERIOD; -- Request goes out
+        
+        -- Simulate RAM Latency
+        wait for CLK_PERIOD; 
+        
+        -- RAM Responds with Data 0xAABBCCDD
+        -- Address 1000 (ends in 00) should read MSB (AA)
+        i_mem_data <= x"AABBCCDD";
+        i_mem_ready <= '1';
+        i_mesi_cc   <= "01"; -- Exclusive
+        
+        wait for CLK_PERIOD; 
+        i_mem_ready <= '0';
+        i_read <= '0'; -- Clear CPU Request
+        
+        -- The CPU output should match RAM data IMMEDIATELY
+        assert o_read_data_cpu = x"AA" 
+            report "TEST 1 FAILED: Stale Data! Expected 0xAA, got " & integer'image(to_integer(unsigned(o_read_data_cpu))) severity error;
+
+        if o_read_data_cpu = x"AA" then report "TEST 1 PASSED" severity note; end if;
+        wait for 20 ns;
+
+        -- =========================================================
+        -- TEST 2: WRITE HIT -> MODIFY DATA
+        -- =========================================================
+        report "TEST 2: Write Hit (Modifying Data)" severity note;
+        
+        i_address_cpu    <= x"1000";
+        i_write_data_cpu <= x"99"; -- Overwrite AA with 99
+        i_write          <= '1';
+        
+        wait for CLK_PERIOD;
+        i_write <= '0';
+        
+        -- Verify internal state by reading back
         i_read <= '1';
         wait for CLK_PERIOD;
         i_read <= '0';
-
-        -- Wait for memory request
-        if o_mem_request = '0' then
-            wait until o_mem_request = '1';
-        end if;
-        wait for 2*CLK_PERIOD;
-
-        -- Memory Response (Exclusive "01")
-        i_mem_data  <= x"AABBCCDD";
-        i_mesi_cc   <= MESI_E; 
-        i_mem_ready <= '1';
-        wait for CLK_PERIOD;
-        i_mem_ready <= '0';
-        wait for 3*CLK_PERIOD;
-
         
-        -- =============================================================
-        -- TEST 2: Write Miss (Allocating line at 0x5678)
-        -- =============================================================
-        report "TEST 2: CPU Write Miss 0x5678" severity note;
-        i_address_cpu    <= x"5678";
-        i_write_data_cpu <= x"FF";
-        i_mesi_cc        <= MESI_S; -- Memory gives it as Shared initially
-        i_write          <= '1';
-        wait for CLK_PERIOD;
-        i_write          <= '0';
+        assert o_read_data_cpu = x"99" 
+            report "TEST 2 FAILED: Write did not update cache! Got " & integer'image(to_integer(unsigned(o_read_data_cpu))) severity error;
+            
+        if o_read_data_cpu = x"99" then report "TEST 2 PASSED" severity note; end if;
+        wait for 20 ns;
 
-        if o_mem_request = '0' then
-            wait until o_mem_request = '1';
-        end if;
-        wait for 2*CLK_PERIOD;
-
-        -- Memory Response
-        i_mem_data  <= x"CCAABBDD";
-        i_mem_ready <= '1';
-        wait for CLK_PERIOD;
-        i_mem_ready <= '0';
-        wait for 3*CLK_PERIOD;
-
+        -- =========================================================
+        -- TEST 3: SNOOP BROADCAST (The Critical Flush Test)
+        -- =========================================================
+        report "TEST 3: Snoop Broadcast (Verifying Flush Data)" severity note;
         
-        -- =============================================================
-        -- TEST 3: Read Hit (Read back 0x1234)
-        -- =============================================================
-        report "TEST 3: CPU Read Hit 0x1234" severity note;
-        i_address_cpu <= x"1234";
-        i_read <= '1';
-        wait for CLK_PERIOD;
+        -- Another core asks for 0x1000
+        i_address_cc   <= x"1000";
+        -- i_data_request is NOT set initially to verify the "Always On" broadcast fix
+        
+        wait for 1 ns; -- Combinatorial Delay
+        
+        -- CHECK: Does o_data_broadcast have 0x99BBCCDD? (Tag matched, so data should be there)
+        -- Byte 0 (MSB) was modified to 99. The rest (BBCCDD) remain from RAM.
+        if o_data_broadcast = x"99BBCCDD" then
+            report "TEST 3 (Part A) PASSED: Broadcast Data valid immediately on address match." severity note;
+        else
+            report "TEST 3 (Part A) FAILED: Broadcast Data Invalid/Zero! Expected x99BBCCDD, got " & integer'image(to_integer(unsigned(o_data_broadcast(31 downto 24)))) severity error;
+        end if;
+        
+        -- Now enable request to check Hit flag
+        i_data_request <= '1';
+        wait for 1 ns;
+        assert o_snoop_hit = '1' report "TEST 3 (Part B) FAILED: No Snoop Hit reported" severity error;
+        
+        i_address_cc <= x"0000"; i_data_request <= '0'; -- Clear
+        wait for 20 ns;
+
+        -- =========================================================
+        -- TEST 4: EVICTION (LRU)
+        -- =========================================================
+        report "TEST 4: Eviction (Filling Cache to force Writeback)" severity note;
+        
+        -- We already have 0x1000 in Index 0 (Modified).
+        -- We need to fill lines 1 to 15 with dummy reads to push 0x1000 to the bottom.
+        
+        for k in 1 to 15 loop
+            i_address_cpu <= std_logic_vector(to_unsigned(4096 + k*4, 16)); -- 0x1004, 1008...
+            i_read <= '1';
+            wait for CLK_PERIOD;
+            
+            i_mem_ready <= '1'; i_mem_data <= x"FFFFFFFF"; i_mesi_cc <= "01";
+            wait for CLK_PERIOD;
+            i_mem_ready <= '0';
+        end loop;
         i_read <= '0';
-        wait for 3*CLK_PERIOD;
         
+        report "Cache Full. Requesting 17th line to force eviction of 0x1000..." severity note;
         
-        -- =============================================================
-        -- TEST 4: Write Hit (Modify 0x1234)
-        -- =============================================================
-        report "TEST 4: CPU Write Hit 0x1234 (Transition E -> M)" severity note;
-        -- 0x1234 is currently Exclusive (from Test 1). Writing should make it Modified.
-        i_address_cpu    <= x"1234";
-        i_write_data_cpu <= x"BB";
-        i_write          <= '1';
-        wait for CLK_PERIOD;
-        i_write          <= '0';
-        wait for 3*CLK_PERIOD;
+        -- Request one more (Line 17)
+        i_address_cpu <= x"5000";
+        i_read <= '1';
+        wait for CLK_PERIOD; -- This cycle detects MISS + EVICT NEEDED
         
+        -- The Cache should immediately assert o_writeback_en because the victim (0x1000) is Modified
+        wait for 1 ns;
         
-        -- =============================================================
-        -- TEST 5: Snoop Hit (Controller checks 0x1234)
-        -- =============================================================
-        report "TEST 5: Controller Snoop Hit Check" severity note;
-        -- Controller asks: "Do you have 0x1234?"
-        i_address_cc   <= x"1234";
-        i_data_request <= '1'; 
-        wait for CLK_PERIOD;
+        assert o_writeback_en = '1' report "TEST 4 FAILED: Writeback not enabled!" severity error;
         
-        -- Verify o_snoop_hit is '1' here in waveform
-        i_data_request <= '0'; 
-        wait for 3*CLK_PERIOD;
+        -- Check the data being evicted. It should be the Modified line (Tag + 00 + Data)
+        -- 0x1000 tag is 0x0400. M state is 00. Data is 99BBCCDD.
+        -- Expected: 0x0400 & 00 & 99BBCCDD
         
-        
-        -- =============================================================
-        -- TEST 6: Snoop Invalidate (Kill 0x5678)
-        -- =============================================================
-        report "TEST 6: Controller Invalidate 0x5678" severity note;
-        -- Controller says: "Invalidate 0x5678" (Maybe another CPU wrote to it)
-        i_address_cc   <= x"5678";
-        i_data_request <= '1'; -- Must be high to find the line
-        i_invalidate   <= '1'; 
-        wait for CLK_PERIOD;
-        
-        i_invalidate   <= '0';
-        i_data_request <= '0';
-        wait for CLK_PERIOD;
-        
-        
-        -- =============================================================
-        -- TEST 7: Snoop State Update (Downgrade 0x1234 from M to S)
-        -- =============================================================
-        report "TEST 7: Controller State Update (M -> S)" severity note;
-        -- 0x1234 is currently Modified (from Test 4).
-        -- Scenario: Another CPU wants to READ. Controller tells us to go to SHARED.
-        
-        i_address_cc      <= x"1234";
-        i_data_request    <= '1';      -- Find the line
-        i_snoop_update_en <= '1';      -- Enable state change
-        i_snoop_new_state <= MESI_S;   -- New State = Shared
-        wait for CLK_PERIOD;
-        
-        i_snoop_update_en <= '0';
-        i_data_request    <= '0';
-        wait for CLK_PERIOD;
-        
-        -- Check Waveform: 0x1234 should now have MESI bits "10" (Shared)
-        
-        report "Simulation completed successfully." severity note;
+        if o_data_out(31 downto 0) = x"99BBCCDD" then
+            report "TEST 4 PASSED: Correct dirty line evicted." severity note;
+        else
+             report "TEST 4 FAILED: Evicted data wrong. Expected x99BBCCDD" severity error;
+        end if;
+
         wait;
     end process;
-    
-end architecture sim;
+
+end Behavioral;

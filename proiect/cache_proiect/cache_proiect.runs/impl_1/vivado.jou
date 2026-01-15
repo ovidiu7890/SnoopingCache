@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2.2 (64-bit)
+# SW Build 4126759 on Thu Feb  8 23:53:51 MST 2024
+# IP Build 4126054 on Fri Feb  9 11:39:09 MST 2024
+# SharedData Build 4115275 on Tue Jan 30 00:40:57 MST 2024
+# Start of session at: Wed Jan 14 09:17:27 2026
+# Process ID: 18184
+# Current directory: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.runs/impl_1
+# Command line: vivado.exe -log top_m.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_m.tcl -notrace
+# Log file: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.runs/impl_1/top_m.vdi
+# Journal file: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.runs/impl_1\vivado.jou
+# Running On: ovi, OS: Windows, CPU Frequency: 3593 MHz, CPU Physical cores: 16, Host memory: 34025 MB
+#-----------------------------------------------------------
+source top_m.tcl -notrace

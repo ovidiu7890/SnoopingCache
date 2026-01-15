@@ -14,23 +14,28 @@ ECHO is off.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source top_m.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/utils_1/imports/synth_1/top_m.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/utils_1/imports/synth_1/top_m.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top top_m -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 480
+INFO: [Synth 8-7075] Helper process launched with PID 9892
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1300.688 ; gain = 438.734
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1303.676 ; gain = 439.480
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top_m' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_m.vhd:14]
 INFO: [Synth 8-638] synthesizing module 'debouncer' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/debouncer.vhd:12]
 INFO: [Synth 8-256] done synthesizing module 'debouncer' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/debouncer.vhd:12]
 INFO: [Synth 8-638] synthesizing module 'ROM' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/ROM.vhd:17]
 INFO: [Synth 8-256] done synthesizing module 'ROM' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/ROM.vhd:17]
-INFO: [Synth 8-638] synthesizing module 'top_module' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd:28]
+INFO: [Synth 8-638] synthesizing module 'top_module' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd:31]
 INFO: [Synth 8-638] synthesizing module 'bus_arbiter' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/bus_arbiter.vhd:15]
 INFO: [Synth 8-256] done synthesizing module 'bus_arbiter' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/bus_arbiter.vhd:15]
 INFO: [Synth 8-638] synthesizing module 'cache_controller' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache_controller.vhd:24]
@@ -40,26 +45,323 @@ INFO: [Synth 8-256] done synthesizing module 'RAM' (0#1) [C:/facultate/3sem1/ssc
 INFO: [Synth 8-638] synthesizing module 'cpu' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd:27]
 INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd:51]
 INFO: [Synth 8-256] done synthesizing module 'cpu' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cpu.vhd:27]
-INFO: [Synth 8-638] synthesizing module 'cache' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:40]
-INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:147]
-INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:159]
-INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:202]
-INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:222]
-INFO: [Synth 8-256] done synthesizing module 'cache' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:40]
-INFO: [Synth 8-256] done synthesizing module 'top_module' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd:28]
+INFO: [Synth 8-638] synthesizing module 'cache' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:39]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:154]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:164]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:204]
+INFO: [Synth 8-226] default block is never used [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:225]
+INFO: [Synth 8-256] done synthesizing module 'cache' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'top_module' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_module.vhd:31]
 INFO: [Synth 8-256] done synthesizing module 'top_m' (0#1) [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/top_m.vhd:14]
-WARNING: [Synth 8-4767] Trying to implement RAM 'RAM_reg' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
-Reason is one or more of the following :
-	1: RAM has multiple writes via different ports in same process. If RAM inferencing intended, write to one port per process. 
-	2: Unable to determine number of words or word size in RAM. 
-	3: No valid read/write found for RAM. 
-ERROR: [Synth 8-3391] Unable to infer a block/distributed RAM for 'RAM_reg' because the memory pattern used is not supported. Failed to dissolve the memory into bits because the number of bits (524288) is too large. Use 'set_param synth.elaboration.rodinMoreOptions {rt::set_parameter dissolveMemorySizeLimit 524288}' to allow the memory to be dissolved into individual bits
+WARNING: [Synth 8-3917] design top_m has port led[14] driven by constant 0
+WARNING: [Synth 8-3917] design top_m has port led[5] driven by constant 0
+WARNING: [Synth 8-7129] Port i_address_cc[1] in module cache is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_address_cc[0] in module cache is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_invalidate in module cache is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_address[15] in module RAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_address[1] in module RAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_address[0] in module RAM is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i_read in module RAM is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 1429.707 ; gain = 567.754
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1459.156 ; gain = 594.961
 ---------------------------------------------------------------------------------
-RTL Elaboration failed
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1459.156 ; gain = 594.961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1459.156 ; gain = 594.961
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.157 . Memory (MB): peak = 1459.156 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/constrs_1/new/constraints.xdc]
+Finished Parsing XDC File [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/constrs_1/new/constraints.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/constrs_1/new/constraints.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_m_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_m_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1535.738 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1535.738 ; gain = 0.000
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'cpu'
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'cache'
+INFO: [Synth 8-802] inferred FSM for state register 'r_state_reg' in module 'top_m'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_idle |                             0001 |                               00
+                s_access |                             0010 |                               01
+              s_wait_hit |                             0100 |                               10
+                  s_done |                             1000 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'one-hot' in module 'cpu'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  s_idle |                               00 |                               00
+       s_miss_wait_write |                               01 |                               01
+        s_miss_wait_read |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'sequential' in module 'cache'
+WARNING: [Synth 8-327] inferring latch for variable 'o_invalidate_reg' [C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/cache.vhd:104]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+                 execute |                               01 |                               01
+               wait_done |                               10 |                               10
+                   check |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'r_state_reg' using encoding 'sequential' in module 'top_m'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 1     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               48 Bit    Registers := 51    
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 9     
+	                8 Bit    Registers := 13    
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 35    
++---RAMs : 
+	             256K Bit	(8192 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   48 Bit        Muxes := 669   
+	   4 Input   48 Bit        Muxes := 9     
+	   3 Input   48 Bit        Muxes := 97    
+	   2 Input   32 Bit        Muxes := 140   
+	   3 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 1     
+	   3 Input   16 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 1     
+	  10 Input   16 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 6     
+	   3 Input    8 Bit        Muxes := 3     
+	  10 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 76    
+	   4 Input    4 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 46    
+	   4 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 469   
+	   3 Input    2 Bit        Muxes := 7     
+	  10 Input    2 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 845   
+	   3 Input    1 Bit        Muxes := 30    
+	   4 Input    1 Bit        Muxes := 36    
+	  10 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design top_m has port led[14] driven by constant 0
+WARNING: [Synth 8-3917] design top_m has port led[5] driven by constant 0
+WARNING: [Synth 8-3332] Sequential element (o_invalidate_reg) is unused and will be removed from module cache.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:35 ; elapsed = 00:02:41 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object    | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|top_m       | u_RAM/mem_reg | 8 K x 32(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 8      | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:38 ; elapsed = 00:02:45 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:02:40 ; elapsed = 00:02:47 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object    | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|top_m       | u_RAM/mem_reg | 8 K x 32(READ_FIRST)   | W | R |                        |   |   | Port A           | 0      | 8      | 
++------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance DUT/u_RAM/mem_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance DUT/u_RAM/mem_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:02:42 ; elapsed = 00:02:48 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |   196|
+|3     |LUT1     |     2|
+|4     |LUT2     |  1055|
+|5     |LUT3     |   331|
+|6     |LUT4     |   279|
+|7     |LUT5     |   291|
+|8     |LUT6     |   990|
+|9     |MUXF7    |    20|
+|10    |RAMB36E1 |     2|
+|11    |FDCE     |  1107|
+|12    |FDPE     |     3|
+|13    |FDRE     |   152|
+|14    |IBUF     |     3|
+|15    |OBUF     |    16|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:37 ; elapsed = 00:02:50 . Memory (MB): peak = 1535.738 ; gain = 594.961
+Synthesis Optimization Complete : Time (s): cpu = 00:02:45 ; elapsed = 00:02:52 . Memory (MB): peak = 1535.738 ; gain = 671.543
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1536.402 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 218 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1540.570 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+The system cannot find the path specified.
+Synth Design complete | Checksum: a163b5cf
 INFO: [Common 17-83] Releasing license: Synthesis
-29 Infos, 1 Warnings, 0 Critical Warnings and 2 Errors encountered.
-synth_design failed
-ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
-INFO: [Common 17-206] Exiting Vivado at Mon Dec 22 11:33:41 2025...
+52 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:49 ; elapsed = 00:03:05 . Memory (MB): peak = 1540.570 ; gain = 1066.941
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1540.570 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.runs/synth_1/top_m.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_m_utilization_synth.rpt -pb top_m_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 14 09:17:20 2026...

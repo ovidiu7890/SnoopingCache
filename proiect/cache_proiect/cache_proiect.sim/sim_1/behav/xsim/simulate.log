@@ -1,9 +1,5 @@
 Time resolution is 1 ps
-Note: SCENARIO 6: Filling Cache 0 to trigger Eviction Write-Back
-Time: 70 ns  Iteration: 0  Process: /tb_System_Top/stim_proc  File: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd
-Note: SCENARIO 6B: Write to 0x4000 (Forces Eviction of 0x3000)
-Time: 1345 ns  Iteration: 0  Process: /tb_System_Top/stim_proc  File: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd
-Note: SCENARIO 6C: CPU 1 Reads Evicted Address 0x3000
-Time: 1435 ns  Iteration: 0  Process: /tb_System_Top/stim_proc  File: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd
-Error: ERROR: Eviction Write-Back Failed! Expected 0x10, got 0
-Time: 1505 ns  Iteration: 3  Process: /tb_System_Top/stim_proc  File: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd
+Note: Cache Full. Triggering Eviction...
+Time: 4985 ns  Iteration: 0  Process: /tb_System_Top/stim_proc  File: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd
+Note: TEST 9B: Write to 0x0050 (Forces Eviction of 0x0010/0x3000)
+Time: 5100 ns  Iteration: 2  Process: /tb_System_Top/stim_proc  File: C:/facultate/3sem1/ssc/SnoopingCache/proiect/cache_proiect/cache_proiect.srcs/sources_1/new/tb_System_Top.vhd

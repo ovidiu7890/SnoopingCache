@@ -1,0 +1,160 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2.2 (win64) Build 4126759 Thu Feb  8 23:53:51 MST 2024
+| Date         : Wed Jan 14 09:18:07 2026
+| Host         : ovi running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_m_control_sets_placed.rpt
+| Design       : top_m
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    82 |
+|    Minimum number of control sets                        |    82 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   362 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    82 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |     5 |
+| >= 6 to < 8        |     9 |
+| >= 8 to < 10       |     9 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     3 |
+| >= 16              |    51 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              25 |            8 |
+| No           | No                    | Yes                    |             134 |           85 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |             135 |           53 |
+| Yes          | No                    | Yes                    |             976 |          416 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+-----------------------------------------------------------+------------------+------------------+----------------+--------------+
+|  Clock Signal  |                       Enable Signal                       | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+-----------------------------------------------------------+------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG | r_error_flag                                              | DB_Rst/rst       |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG | DB_Step/eqOp                                              |                  |                1 |              2 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_CPU/FSM_onehot_r_state[3]_i_1__0_n_0   | DB_Rst/rst       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_CPU/FSM_onehot_r_state[3]_i_1__1_n_0   | DB_Rst/rst       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_CPU/FSM_onehot_r_state[3]_i_1_n_0      | DB_Rst/rst       |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | DUT/u_Arbiter/E[0]                                        | DB_Rst/rst       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | s_rom_step                                                | DB_Rst/rst       |                1 |              5 |         5.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_CPU/o_write_data_cpu[7]_i_1_n_0        | DB_Rst/rst       |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/o_mem_address0                   |                  |                4 |              7 |         1.75 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_CPU/FSM_onehot_r_state_reg_n_0_[1]     | DB_Rst/rst       |                6 |              7 |         1.17 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_CPU/o_write_data_cpu[7]_i_1__0_n_0     | DB_Rst/rst       |                1 |              7 |         7.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_CPU/FSM_onehot_r_state_reg_n_0_[1]     | DB_Rst/rst       |                6 |              7 |         1.17 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_CPU/o_write_data_cpu[7]_i_1__1_n_0     | DB_Rst/rst       |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/o_mem_address0                   |                  |                5 |              7 |         1.40 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_CPU/FSM_onehot_r_state_reg_n_0_[1]     | DB_Rst/rst       |                6 |              7 |         1.17 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/o_mem_address0                   |                  |                4 |              7 |         1.75 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[0][31]_i_1_n_0     | DB_Rst/rst       |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/o_read_data_cpu[7]_i_1__0_n_0    | DB_Rst/rst       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_CPU/status_data_out[7]_i_1_n_0         | DB_Rst/rst       |                1 |              8 |         8.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[0][31]_i_1__0_n_0  | DB_Rst/rst       |                5 |              8 |         1.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/o_read_data_cpu[7]_i_1_n_0       | DB_Rst/rst       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_CPU/status_data_out[7]_i_1__0_n_0      | DB_Rst/rst       |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_CPU/status_data_out[7]_i_1__1_n_0      | DB_Rst/rst       |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/o_read_data_cpu[7]_i_1__1_n_0    | DB_Rst/rst       |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[0][31]_i_1__1_n_0  | DB_Rst/rst       |                6 |              8 |         1.33 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[0][46]_i_1__0_n_0  | DB_Rst/rst       |                6 |             10 |         1.67 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[0][46]_i_1_n_0     | DB_Rst/rst       |                4 |             10 |         2.50 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[0][46]_i_1__1_n_0  | DB_Rst/rst       |                7 |             10 |         1.43 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_CPU/r_rw0                              |                  |                5 |             14 |         2.80 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_CPU/r_rw0                              |                  |                7 |             14 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_CPU/r_rw0                              |                  |                5 |             14 |         2.80 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_CPU/E[0]                               |                  |                3 |             16 |         5.33 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[2][46]_i_1__0_n_0  | DB_Rst/rst       |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[15][46]_i_1__0_n_0 | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[3][46]_i_1__0_n_0  | DB_Rst/rst       |               10 |             18 |         1.80 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[5][46]_i_1__0_n_0  | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[4][46]_i_1__0_n_0  | DB_Rst/rst       |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[7][46]_i_1__0_n_0  | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[6][46]_i_1__0_n_0  | DB_Rst/rst       |               10 |             18 |         1.80 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[8][46]_i_1__0_n_0  | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[15][46]_i_1_n_0    | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[9][46]_i_1__0_n_0  | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[3][46]_i_1_n_0     | DB_Rst/rst       |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[2][46]_i_1_n_0     | DB_Rst/rst       |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[5][46]_i_1_n_0     | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[4][46]_i_1_n_0     | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[6][46]_i_1_n_0     | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[7][46]_i_1_n_0     | DB_Rst/rst       |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[9][46]_i_1_n_0     | DB_Rst/rst       |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[8][46]_i_1_n_0     | DB_Rst/rst       |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[1][46]_i_1_n_0     | DB_Rst/rst       |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/o_data_out0                      |                  |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[14][46]_i_1__0_n_0 | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[10][46]_i_1_n_0    | DB_Rst/rst       |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[12][46]_i_1_n_0    | DB_Rst/rst       |                4 |             18 |         4.50 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[11][46]_i_1_n_0    | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[14][46]_i_1_n_0    | DB_Rst/rst       |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[0].u_Cache/r_cache_lines[13][46]_i_1_n_0    | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/o_data_out0                      |                  |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[11][46]_i_1__0_n_0 | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[10][46]_i_1__0_n_0 | DB_Rst/rst       |                5 |             18 |         3.60 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[12][46]_i_1__0_n_0 | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/o_data_out0                      |                  |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[13][46]_i_1__0_n_0 | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[1].u_Cache/r_cache_lines[1][46]_i_1__0_n_0  | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[12][46]_i_1__1_n_0 | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[11][46]_i_1__1_n_0 | DB_Rst/rst       |               11 |             18 |         1.64 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[10][46]_i_1__1_n_0 | DB_Rst/rst       |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[13][46]_i_1__1_n_0 | DB_Rst/rst       |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[14][46]_i_1__1_n_0 | DB_Rst/rst       |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[2][46]_i_1__1_n_0  | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[3][46]_i_1__1_n_0  | DB_Rst/rst       |               11 |             18 |         1.64 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[15][46]_i_1__1_n_0 | DB_Rst/rst       |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[1][46]_i_1__1_n_0  | DB_Rst/rst       |                4 |             18 |         4.50 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[4][46]_i_1__1_n_0  | DB_Rst/rst       |                7 |             18 |         2.57 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[5][46]_i_1__1_n_0  | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[6][46]_i_1__1_n_0  | DB_Rst/rst       |                8 |             18 |         2.25 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[8][46]_i_1__1_n_0  | DB_Rst/rst       |               12 |             18 |         1.50 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[7][46]_i_1__1_n_0  | DB_Rst/rst       |                9 |             18 |         2.00 |
+|  clk_IBUF_BUFG | DUT/gen_cores[2].u_Cache/r_cache_lines[9][46]_i_1__1_n_0  | DB_Rst/rst       |               10 |             18 |         1.80 |
+|  clk_IBUF_BUFG |                                                           |                  |                8 |             25 |         3.12 |
+|  clk_IBUF_BUFG |                                                           | DB_Rst/rst       |               85 |            134 |         1.58 |
++----------------+-----------------------------------------------------------+------------------+------------------+----------------+--------------+
+
+

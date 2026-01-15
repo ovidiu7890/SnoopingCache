@@ -43,11 +43,9 @@ architecture Behavioral of top_m is
 
 begin
 
-    -- 1. Debounce Inputs
     DB_Step: entity work.debouncer port map(clk, btnC, step_btn);
     DB_Rst:  entity work.debouncer port map(clk, btnU, rst);
 
-    -- Edge Detector for Step Button
     process(clk) begin
         if rising_edge(clk) then
             step_prev <= step_btn;
@@ -55,16 +53,12 @@ begin
         end if;
     end process;
 
-    -- 2. Instruction ROM
     ROM: entity work.ROM
     port map (
         i_step => s_rom_step, o_cpu_id => s_cpu_id, o_addr => s_addr, 
         o_rw => s_rw, o_data_in => s_data_in, o_expected => s_expected, o_check_en => s_check_en
     );
 
-    -- 3. DUT Instance (Top Module)
-    -- Mapping dynamic signals based on CPU ID is tricky in VHDL '93 without arrays in ports.
-    -- We map them to internal signals and drive them in the process below.
     DUT: entity work.top_module
     port map (
         clk => clk, rst => rst,
@@ -73,7 +67,6 @@ begin
         cmd2_en => cmd_en(2), cmd2_rw => cmd_rw(2), cmd2_addr => s_addr, cmd2_data => s_data_in, sts2_done => sts_done(2), sts2_data => sts_data_2
     );
 
-    -- 4. Main Test Controller
     process(clk, rst)
     begin
         if rst = '1' then
@@ -86,12 +79,12 @@ begin
             case r_state is
                 when IDLE =>
                     cmd_en <= "000";
-                    if step_pulsed = '1' then
+                    
+                    if (step_pulsed = '1') or (s_rom_step >= 7 and s_rom_step <= 21) then
                         r_state <= EXECUTE;
                     end if;
                     
                 when EXECUTE =>
-                    -- Activate only the selected CPU
                     if s_cpu_id = 0 then cmd_en <= "001"; cmd_rw <= "00" & s_rw;
                     elsif s_cpu_id = 1 then cmd_en <= "010"; cmd_rw <= "0" & s_rw & "0";
                     else cmd_en <= "100"; cmd_rw <= s_rw & "00";
@@ -99,14 +92,12 @@ begin
                     r_state <= WAIT_DONE;
                     
                 when WAIT_DONE =>
-                    cmd_en <= "000"; -- Pulse enable for 1 cycle is usually enough, or wait for handshake
+                    cmd_en <= "000"; 
                     
-                    -- Check if the selected CPU is done
                     if (s_cpu_id = 0 and sts_done(0) = '1') or
                        (s_cpu_id = 1 and sts_done(1) = '1') or
                        (s_cpu_id = 2 and sts_done(2) = '1') then
-                       
-                        -- Capture Data
+                        
                         if s_cpu_id = 0 then r_last_read <= sts_data_0;
                         elsif s_cpu_id = 1 then r_last_read <= sts_data_1;
                         else r_last_read <= sts_data_2;
@@ -116,7 +107,6 @@ begin
                     end if;
                     
                 when CHECK =>
-                    -- Verify result if Check Enabled
                     if s_check_en = '1' then
                         if r_last_read /= s_expected then
                             r_error_flag <= '1'; -- ERROR!
@@ -125,8 +115,7 @@ begin
                         end if;
                     end if;
                     
-                    -- Prepare for next step
-                    if s_rom_step < 15 then
+                    if s_rom_step < 23 then
                         s_rom_step <= s_rom_step + 1;
                     end if;
                     r_state <= IDLE;
@@ -134,9 +123,12 @@ begin
         end if;
     end process;
 
-    -- 5. LED Output Mappings
-    led(4 downto 0)   <= std_logic_vector(to_unsigned(s_rom_step, 5)); -- Binary Counter of Step
-    led(12 downto 5)  <= r_last_read; -- The Data we read
-    led(15)           <= r_error_flag; -- RED LIGHT on Error
+    led(5 downto 0)   <= std_logic_vector(to_unsigned(s_rom_step, 6)); 
+
+    led(13 downto 6)  <= r_last_read; 
+
+    led(14)           <= '0';
+
+    led(15)           <= r_error_flag; 
 
 end Behavioral;
